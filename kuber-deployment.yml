@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: money-transfer-monitoring
+  labels:
+    app: money-transfer-monitoring
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: money-transfer-monitoring
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: money-transfer-monitoring
+    spec:
+      containers:
+      - image: monitoring-service:0.0.1-SNAPSHOT
+        name: monitoring-service
+        ports:
+        - containerPort: 9030
+      restartPolicy: Always

@@ -1,0 +1,13 @@
+version: "3"
+services:
+  money-transfer-monitoring:
+    image: monitoring-service:0.0.2-SNAPSHOT
+    container_name: monitoring-service
+    environment:
+      - "SPRING_APPLICATION_NAME=monitoring-service"
+      - "SPRING_PROFILES_ACTIVE=dev"
+      - "SPRING_CLOUD_CONFIG_URL=http://192.168.53.58:9031"
+    volumes:
+      - "/var/log/money-transfer/monitoring-service/:/var/log/monitoring-service/"
+    ports:
+      - "9030:9030"

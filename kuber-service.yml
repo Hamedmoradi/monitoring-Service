@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: money-transfer-monitoring
+  labels:
+    app: money-transfer-monitoring
+spec:
+  selector:
+    app: money-transfer-monitoring
+  ports:
+    - name: "http"
+      port: 9030
+      targetPort: 9030
+  type: NodePort
